@@ -19,8 +19,9 @@ public class TestGiocoSedie {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+	//istanzia l'array sedie[] di tipo Posto, la cui grandezza è 15 (NUMSEDIE)
         Posto sedie[] = new Posto[NUMSEDIE];
-
+	//crea un oggetto di tipo Posto per ogni elemento dell'array sedie
 	for (int k = 0; k < sedie.length; k++)
 		sedie[k] = new Posto();
 
@@ -28,7 +29,7 @@ public class TestGiocoSedie {
 	//System.out.println("Sto facendo partire il Display.");
         logger.info("Sto facendo partire il Display.\n");
 	display.start();
-
+	//istanzia l'array dei partecipanti, di tipo Partecipante, di grandezza 16
 	Partecipante array[] = new Partecipante[NUMSEDIE+1];
 	for (int i = 0; i < NUMSEDIE + 1; i++) {
 		array[i] = new Partecipante(sedie);
