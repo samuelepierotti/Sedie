@@ -1,33 +1,41 @@
-package giocosedie;
+/**
+ * Classe Partecipante rappresenta un giocatore
+ */
+class Partecipante extends Thread {
+    /** Array dei posti disponibili nel gioco */
+    private Posto sedie[];
 
-class Partecipante extends Thread
+    /**
+     * Costruttore della classe Partecipante.
+     * 
+     * Ha come parametro l'array sedie[]
+     */
+    public Partecipante(Posto sedie[]) {
+        this.sedie = sedie;
+    }
 
-{
-	Posto sedie[];
+    /**
+     * Metodo run del thread Partecipante. Ogni partecipante cerca di occupare un posto libero.
+     */
+    public void run() {
+        try {
+            // Pausa iniziale casuale per far partire i giocatori in momenti diversi
+            sleep((int) (Math.random() * 1000));
 
-	public Partecipante(Posto sedie[]) {
+            // Partecipante cerca di occupare un posto
+            for (int i = 0; i < sedie.length; i++) {
+                if (sedie[i].occupa()) {
+                    System.out.println("Sono il Thread " + this.getName()
+                            + ". Sono riuscito a sedermi sul posto " + i);
+                    return;
+                }
+            }
+            // Messaggio di sconfitta se nessun posto è disponibile
+            System.out.println("Sono il Thread " + this.getName()
+                    + ". Ho perso :((((");
 
-		this.sedie = sedie;
-
-	}
-
-	public void run() {
-
-		try {
-			sleep((int) (Math.random() * 1000));
-
-			for (int i = 0; i < sedie.length; i++) {
-				if (sedie[i].occupa()) {
-					System.out.println("Sono il Thread " + this.getName()
-							+ ". Sono riuscito a sedermi sul posto " + i);
-					return;
-				}
-			}
-			System.out.println("Sono il Thread " + this.getName()
-					+ ". Ho perso :((((");
-
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
-	}
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
