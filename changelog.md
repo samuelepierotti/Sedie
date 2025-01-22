@@ -1,34 +1,30 @@
+# Changelog
 
-[Version Number] – YYYY-MM-DD
- 
-New Features
+Tutte le modifiche significative al progetto saranno documentate in questo file.
 
-[Feature Name]: Description of the new feature and its benefits.
+## [Unreleased]
 
-Example: A practical example or use case, if applicable.
+## [22-01-2025]
+### Aggiunte
+- **Partecipante.java**: Modificata per salvare la sequenza dei posti occupati in un file di testo (`Risultato.txt`).
+- **TestGiocoSedie.java**: Aggiornata per permettere all'utente di specificare il numero di partecipanti tramite input.
 
+### Commenti
+- **Display.java**: Aggiunti commenti dettagliati per spiegare il funzionamento della classe Monitor.
+- **Partecipante.java**: Aggiunti commenti dettagliati per chiarire i metodi e la logica dei thread.
+- **Posto.java**: Commentata per illustrare la gestione sincronizzata dei posti.
+- **TestGiocoSedie.java**: Aggiunti JavaDoc e altri commenti per far comprendere meglio il codice.
 
+## [17-01-2025]
+### Modifiche
+- **CHANGELOG.md**: Creato e aggiornato il file di changelog per documentare le modifiche precedenti.
 
- 
-Improvements
-[Improvement Name]: Description of the improvement and its benefits.
-Example: A practical example or use case, if applicable.
- 
-Bug Fixes
-[Bug Fix Name]: Description of the bug and the fix applied.
-Impact: Explanation of the impact of this fix on the users.
- 
-Deprecated
-[Deprecated Feature Name]: Description of the feature being deprecated.
-Timeline: When the feature will be removed.
-Alternative: Suggested alternatives or upgrades.
- 
-Removed
-[Removed Feature Name]: Description of the feature that has been removed.
-Reason: Explanation of why it was removed.
- 
-Security
-[Security Update Name]: Description of the security issue addressed.
-Impact: Explanation of the impact of this security update on the users.
+## [10-01-2025]
+### Modifiche
+- **TestGiocoSedie.java**: Aggiunta di commenti per spiegare alcune parti significative di codice.
 
+## [09-01-2025]
+### Inizio progetto
+- **Creazione progetto**: Avviato il progetto con la creazione delle classi iniziali (`TestGiocoSedie.java`, `Posto.java`, `Partecipante.java`, `Display.java`).
 
+---
