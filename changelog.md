@@ -2,8 +2,6 @@
 
 Tutte le modifiche significative al progetto saranno documentate in questo file.
 
-## [Unreleased]
-
 ## [22-01-2025]
 ### Aggiunte
 - **Partecipante.java**: Modificata per salvare la sequenza dei posti occupati in un file di testo (`Risultato.txt`).
