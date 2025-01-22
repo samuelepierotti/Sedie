@@ -1,42 +1,51 @@
-package giocosedie;
+/**
+ * Classe Display monitora e visualizza lo stato delle sedie durante il gioco.
+ */
+class Display extends Thread {
+    /** Array di posti da monitorare */
+    private Posto sedie[];
+    /** Flag per indicare la fine del gioco */
+    private boolean endgame;
 
-class Display extends Thread
+    /**
+     * Costruttore della classe Display.
+     * 
+     * Ha come parametro l'array sedie[]
+     */
+    public Display(Posto sedie[]) {
+        this.sedie = new Posto[sedie.length];
+        for (int s = 0; s < sedie.length; s++) {
+            this.sedie[s] = sedie[s];
+        }
+    }
 
-{
-	private Posto sedie[];
-	private boolean endgame;
+    /**
+     * Metodo run del thread Display. Visualizza lo stato di occupazione dei posti.
+     */
+    public void run() {
+        try {
+            while (!endgame) {
+                int count = 0;
 
-	public Display(Posto sedie[]) {
+                // Pausa casuale per aggiornamento dello stato
+                sleep((int) (Math.random() * 250));
 
+                // Visualizza lo stato delle sedie
+                for (int i = 0; i < sedie.length; i++) {
+                    if (sedie[i].libero()) {
+                        System.out.print("0"); // Posto libero
+                    } else {
+                        count++;
+                        System.out.print("*"); // Posto occupato
+                    }
+                }
+                System.out.println();
 
-		this.sedie = new Posto[sedie.length];
-
-		for (int s = 0; s < sedie.length; s++)
-			this.sedie[s] = sedie[s];
-	}
-
-	public void run() {
-
-		try {
-			while (!endgame) {
-				int count = 0;
-
-				sleep((int) (Math.random() * 250));
-
-				for (int i = 0; i < sedie.length; i++) {
-				
-					if (sedie[i].libero())
-						System.out.print("0");
-					else {
-						count++;
-						System.out.print("*");
-					}
-				}
-				System.out.println();
-				endgame = (count == sedie.length);
-			}
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
-	}
+                // Controlla se tutti i posti sono occupati
+                endgame = (count == sedie.length);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
