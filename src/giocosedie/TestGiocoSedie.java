@@ -11,6 +11,7 @@
  */
 package giocosedie;
 
+import java.util.Scanner
 import java.util.logging.Logger;
 
 /**
@@ -26,6 +27,32 @@ public class TestGiocoSedie {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Scanner per ottenere l'input dell'utente
+        Scanner scanner = new Scanner(System.in);
+        
+        int numPartecipanti = 0;
+        boolean check = false;
+
+        // Richiesta del numero di partecipanti con ciclo while: se il valore inserito non è valido ripete la richiesta fin quando non ne viene inserito uno valido
+        while (!check) {
+            try {
+                System.out.print("Inserisci il numero di partecipanti (maggiore di " + NUMSEDIE + "): ");
+                numPartecipanti = scanner.nextInt();
+                
+                // Se il numero inserito è <= NUMSEDIE, solleva un'eccezione
+                if (numPartecipanti <= NUMSEDIE) {
+                    throw new IllegalArgumentException();
+                }
+                
+                check = true; // Input valido, uscita dal ciclo
+
+            } catch (IllegalArgumentException e) {
+                System.out.println("Errore: Il numero di partecipanti deve essere maggiore del numero di sedie"); // Messaggio di errore in caso di input <= NUMSEDIE
+            } catch (Exception e) {
+                System.out.println("Inserisci un numero intero valido."); // Messaggio di errore generico
+                scanner.nextLine(); // Pulizia dell'input buffer in caso di errore
+            }
+        }
         // Crea un array di oggetti Posto per rappresentare le sedie nel gioco
         Posto sedie[] = new Posto[NUMSEDIE];
 
@@ -40,11 +67,13 @@ public class TestGiocoSedie {
         display.start();
 
         // Crea un array di thread Partecipante di dimensione NUMSEDIE + 1
-        Partecipante array[] = new Partecipante[NUMSEDIE + 1];
-        for (int i = 0; i < NUMSEDIE + 1; i++) {
+        Partecipante array[] = new Partecipante[numPartecipanti];
+        for (int i = 0; i < numPartecipanti; i++) {
             array[i] = new Partecipante(sedie);
             logger.info("Sto facendo partire il thread id: " + array[i].getId() + " name: " + array[i].getName() + "\n");
             array[i].start();
         }
+        
+        scanner.close(); // Chiudere lo scanner
     }
 }
