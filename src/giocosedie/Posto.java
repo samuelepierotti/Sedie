@@ -1,3 +1,5 @@
+package giocosedie;
+
 /**
  * Classe Posto rappresenta una sedia nel gioco.
  */
