@@ -35,7 +35,7 @@ class Partecipante extends Thread {
                 if (sedie[i].occupa()) {
                     // Scrive il risultato nel file
                     synchronized (Partecipante.class) { // Sincronizzazione per evitare conflitti tra thread
-                        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Risultato.txt", true))) {
+                        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
                             writer.write("Posto " + i + " occupato dal thread " + this.getName() + "\n");
                         }
                     }
