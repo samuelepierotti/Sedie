@@ -1,3 +1,5 @@
+package giocosedie;
+
 /**
  * Classe Display monitora e visualizza lo stato delle sedie durante il gioco.
  */
